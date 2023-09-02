@@ -74,24 +74,23 @@ void deletionbyindex()
 {
 printf("Enter the index");
 scanf("%d",&index);
-*(ptr+n-1)=e;
     n--;
     realloc(*ptr,n);
-    for(i=0;i<index;n--)
-    {
-        if(e==*(ptr+i))
+    for(i=index;i<n-1;i--)
 {
     *(ptr+i)=*(ptr+i+1);
 }
+for(i=0;i<n;i++)
+  {
+    printf("%d",*(ptr+i));
+  }
 
 }
-}
+
 void delete()
 {
     free(*ptr);
 }
-
-
 void main()
 {int n,e,index;
 void insert();
@@ -99,10 +98,4 @@ void display();
 void insertionbyelement();
 void insertibyelementandindex();
 void deletionbyelement();
-
-
-
-
-
-
 }
