@@ -1,0 +1,108 @@
+#include<stdio.h>
+void insert()
+{int *ptr,n;
+    printf("Enter the size of element");
+    scanf("%d",&n);
+    ptr=(int *) malloc(n*,sizeof(int));
+
+    printf("Enter the elements");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",ptr+i);
+    }
+}
+void display()
+{
+     for(int i=0;i<n;i++)
+    {
+        printf(*(ptr+i));
+    }
+}
+void insertionbyelement()
+{int e,index;
+    printf("Enter the element");
+    scanf("%d",&e);
+     *(ptr+n-1)=e;
+    n++;
+    realloc(*ptr,n);
+    for(i=0;i<n;n++)
+    {
+        *(ptr+i)=*(ptr+i+1);
+     }
+      for(int i=0;i<n;i++)
+    {
+        printf(*(ptr+i));
+    }
+}
+void insertibyelementandindex()
+{
+printf("enter the new element");
+scanf("%d",&e);
+printf("Enter the index");
+scanf("%d",&index);
+n++;
+ realloc(*ptr,n);
+  *(ptr+n-1)=e;
+  for(i=n-1;i>=index;i--)
+  {
+     *(ptr+i)=*(ptr+i+1);
+      }
+e=*(ptr+index);
+for(i=0;i<n;i++)
+  {
+    printf("%d",*(ptr+i));
+  }
+
+}
+void deletionbyelement()
+{
+    printf("Enter the element");
+    scanf("%d",&e);
+     *(ptr+n-1)=e;
+    n--;
+    realloc(*ptr,n);
+    for(i=0;i<n;n--)
+    {
+        if(e==*(ptr+i))
+{
+    *(ptr+i)=*(ptr+i+1);
+}
+    }
+
+}
+void deletionbyindex()
+{
+printf("Enter the index");
+scanf("%d",&index);
+*(ptr+n-1)=e;
+    n--;
+    realloc(*ptr,n);
+    for(i=0;i<index;n--)
+    {
+        if(e==*(ptr+i))
+{
+    *(ptr+i)=*(ptr+i+1);
+}
+
+}
+}
+void delete()
+{
+    free(*ptr);
+}
+
+
+void main()
+{int n,e,index;
+void insert();
+void display();
+void insertionbyelement();
+void insertibyelementandindex();
+void deletionbyelement();
+
+
+
+
+
+
+}
