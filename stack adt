@@ -4,7 +4,7 @@
 struct stackAdt{
     int st[max];
     int *top,*ptr;
-    int size,temp;
+    int size;
     }o;
 void inp()
 {
@@ -27,16 +27,21 @@ void disp()
     }
 }
 void push()
-{  o.ptr=(int*)realloc(o.ptr,(o.size+1)*sizeof(int));
+{ 
+    
+     int val;
+    o.ptr=(int*)realloc(o.ptr,(o.size+1)*sizeof(int));
     printf("enter element to be pushed");
     scanf("%d",&val);
-    size++;
+    o.size=o.size+1; 
+    o.ptr[o.size-1]=val;
+    disp();
     
 }
 
 
 void main()
-{ 
+{
     inp();
     push();
 }
