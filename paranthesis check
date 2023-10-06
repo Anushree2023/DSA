@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define max 100
+
+struct stackAdt {
+    int st[max];
+    int *top, *ptr;
+    int size, temp;
+} o;
+
+void inp() {
+    printf("Enter the size of stack: ");
+    scanf("%d", &o.size);
+    o.ptr = (int *)malloc(o.size * sizeof(int));
+    printf("Enter elements of stack: ");
+    for (int i = 0; i < o.size; i++) {
+        scanf("%d", &o.ptr[i]);
+    }
+    disp();
+}
+
+void disp() {
+    for (int i = 0; i < o.size; i++) {
+        printf("%d \t", o.ptr[i]);
+    }
+    printf("\n");
+}
+
+void push(int val) {
+    o.ptr = (int *)realloc(o.ptr, (o.size + 1) * sizeof(int));
+    printf("Enter element to be pushed: ");
+    scanf("%d", &val);
+    o.size = o.size + 1;
+    o.ptr[o.size - 1] = val;
+    disp();
+}
+
+void pop() {
+    if (o.size > 0) {
+        o.ptr = (int *)realloc(o.ptr, (o.size - 1) * sizeof(int));
+        o.size--;
+    } else {
+        printf("Stack is empty.\n");
+    }
+    disp();
+}
+
+void check() {
+    struct stackAdt stack;
+    stack.top = stack.st;
+
+    for (int i = 0; i < o.size; i++) {
+        if (o.ptr[i] == '(') {
+            *stack.top = '(';
+            stack.top++;
+        } else if (o.ptr[i] == ')') {
+            if (stack.top > stack.st && *(stack.top - 1) == '(') {
+                stack.top--;
+            } else {
+                printf("Unbalanced equation\n");
+                return;
+            }
+        }
+    }
+
+    if (stack.top == stack.st) {
+        printf("Balanced equation\n");
+    } else {
+        printf("Unbalanced equation\n");
+    }
+}
+
+int main() {
+    inp();
+    check();
+    return 0;
+}
