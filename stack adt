@@ -38,10 +38,20 @@ void push()
     disp();
     
 }
+void pop()
+{printf("Pop operation functioning ");
+    o.ptr = (int *)realloc(o.ptr, (o.size - 1) * sizeof(int));
+    o.size--;
+    printf("\n");
+    disp();
+
+
+}
 
 
 void main()
 {
     inp();
     push();
+    pop();
 }
