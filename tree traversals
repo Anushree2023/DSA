@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct tree
+{
+    struct tree *left;
+    struct tree *right;
+    int data;
+};
+struct tree *root=NULL;
+struct tree create()
+{ 
+    
+    struct tree *t1=(struct tree *)malloc(sizeof(struct  tree ));
+    struct tree *t2=(struct tree *)malloc(sizeof(struct  tree ));
+    struct tree *t3=(struct tree *)malloc(sizeof(struct  tree ));
+    t1->data=10;
+    t2->data=15;
+    t3->data=5;
+    t1->left = t1->right = NULL;
+    t2->left = t2->right = NULL;
+    t3->left = t3->right = NULL;
+
+    t1->left = t3;
+    t1->right = t2;
+    
+ return t1;
+}
+void preorder(struct tree *root)
+{   printf("PRE ORDER -----NLR-----\n");
+    if (root!=NULL)
+    {
+    printf("%d",root->data);
+    preorder(root->left);
+    preorder(root->right);
+    }
+
+}
+void inorder(struct tree *root)
+{
+    printf(" IN ORDER ----LNR----\n");
+    if(root!=NULL)
+    { 
+        inorder(root->left);
+        printf("%d",root->data);
+        inorder(root->right);
+        
+    }
+}
+void postorder(struct tree *root)
+{
+ printf(" POST ORDER ----LRN---- \n");
+ if(root!=NULL)
+{ 
+postorder(root->left);
+postorder(root->right);
+printf("%d",root->data);
+}
+}
+void main()
+{ 
+   struct tree *root = create(); 
+
+    inorder(root);
+
+   
+}
