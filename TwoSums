@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+class Solution {
+    public int[] twoSum(int[] nums, int target)
+     {
+         int sum=0;
+         int i;
+         
+        while(sum!=target)
+        {
+        for( i=0;i<nums.length;i++)
+        {
+           
+            sum=nums[i]+nums[1+1];
+            
+        }
+         ArrayList<Integer> arrayList = new ArrayList<>();
+arrayList.add(i);
+arrayList.add(i+1);
+System.out.print(arrayList);
+        }
+        
+
+return null;
+         }
+
+     }
