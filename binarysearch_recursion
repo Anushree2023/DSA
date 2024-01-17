@@ -20,3 +20,31 @@ else
     return 0;
 }
 }
+int main()
+{
+    int i,size,num,temp=0;
+    printf("ENTER THE SIZE OF ARRAY :- ");
+    scanf("%d",&size);
+    int s=0,e=size-1;
+    int *arr=(int*)malloc(sizeof(int)*size);
+    printf("ENTER THE ELEMENTS OF ARRAY :-");
+    for(i=0;i<size;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("ENTER THE ELEMENT YOU WANT TO FIND :- ");
+    scanf("%d",&num);
+    if(arr[size-1]<num)
+    {
+        printf("NUMBER NOT FOUND!!!");
+    }
+    else{
+    temp=binary_search_recur(arr,num,s,e);
+    }
+    if(flag==1)
+    {
+        printf("NUMBER FOUND AT POSITION %d",temp+1);
+    }
+    return 0;
+}
+
