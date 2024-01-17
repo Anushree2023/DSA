@@ -1,0 +1,22 @@
+int binary_search_recur(int *arr,int num,int s ,int e)
+{
+int current =(s+e)/2;
+if (num==arr[current])
+{
+    return arr[current];
+}
+else if (num<arr[current])
+{
+    binary_search_recur(arr,num,s,current);
+}
+else if (num>arr[current])
+{
+    binary_search_recur(arr,num,current,e);
+}
+else 
+{
+    printf("Element not present");
+    exit(0);
+    return 0;
+}
+}
