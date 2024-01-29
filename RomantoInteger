@@ -1,0 +1,50 @@
+class Solution {
+public:
+    int romanToInt(string s)
+ {
+        
+    char temp;
+int sum=0;
+for(int i=0;i<s.size();i++)
+{
+    temp=s[i];                                   
+    if(temp=='I')
+    {
+        sum=sum+1;
+    }
+    else if(temp=='V')
+    {
+        sum=sum+5;
+    }
+    else if (temp=='X')
+    {
+        sum=sum+10;
+    }
+    else if (temp='L')
+    {
+        sum=sum+50;
+    }
+    else if (temp='C')
+    {
+        sum=sum+100;
+    }
+    else if (temp='D')
+    {
+        sum=sum+500;
+    }
+    else if (temp='M')
+    {
+        sum=sum+1000;
+    }
+    else
+    {
+        break;
+    }
+}
+
+return sum;
+
+
+        
+    }
+};
