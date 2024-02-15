@@ -1,0 +1,52 @@
+#include<iostream>
+#include<map>
+
+using namespace std;
+
+int main()
+{
+    int in;
+    cout<<"Enter number of objects: ";
+    cin>>in;
+
+    float pro[in], t[in], pw[in],temp[in];
+
+    cout<<"Enter maximum capacity: ";
+    float c;
+    cin>>c;
+
+    cout<<"Enter profit score and time:"<<endl;
+    for(int i=0;i<in;i++)
+    {
+        cin>>pro[i];
+    }
+    for(int i=0;i<in;i++)
+    {
+        cin>>t[i];
+    }
+    for(int i=0;i<in;i++)
+    {
+        pw[i]=pro[i]/t[i];
+    }
+auto cmp = [](float a, float b) { return a > b; };
+map<float, float, decltype(cmp)> orderedMap(cmp);
+for(int j=0;j<in;j++)
+    {
+        orderedMap[pw[j]] = t[j];
+    }
+cout << "Ordered Map (sorted by profit-to-time ratio):" << endl;
+    for(const auto& pair : orderedMap)
+    {
+        cout << "profit-time"<< pair.first << " Time: " << pair.second << endl;
+    }
+	for(int k=0;k<in;k++)
+	{   
+		while(c!=0)
+	{
+		c=c-t[k];
+		temp[k]=c;
+	}
+	}
+
+    return 0;
+}
