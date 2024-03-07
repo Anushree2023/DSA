@@ -1,0 +1,47 @@
+include <iostream>
+#include <vector>
+#include <algorithm>
+ 
+using namespace std;
+ 
+int main() {
+    int n;
+    cout << "Enter the number of talks: ";
+    cin >> n;
+ 
+    vector<int> startTimes(n);
+    vector<int> endTimes(n);
+ 
+    cout << "Enter start and end times for each talk:" << endl;
+    for (int i = 0; i < n; ++i) {
+        cin >> startTimes[i] >> endTimes[i];
+    }
+ 
+    // Sort talks based on end times
+    vector<int> indices(n);
+    for (int i = 0; i < n; ++i) {
+        indices[i] = i;
+    }
+    sort(indices.begin(), indices.end(), [&](int a, int b) {
+        return endTimes[a] < endTimes[b];
+    });
+ 
+    vector<int> selectedTalks;
+    selectedTalks.push_back(indices[0]);
+    int lastEnd = endTimes[indices[0]];
+ 
+    for (int i = 1; i < n; ++i) {
+        if (startTimes[indices[i]] >= lastEnd) {
+            selectedTalks.push_back(indices[i]);
+            lastEnd = endTimes[indices[i]];
+        }
+    }
+ 
+    cout << "Maximum number of non-overlapping talks: " << selectedTalks.size() << endl;
+    cout << "Selected talks:" << endl;
+    for (const auto& index : selectedTalks) {
+        cout << "Start: " << startTimes[index] << " End: " << endTimes[index] << endl;
+    }
+ 
+    return 0;
+}
