@@ -1,0 +1,49 @@
+Input: hand = [1,2,3,6,2,3,4,7,8], groupSize = 3
+Output: true
+Explanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8]
+So basically we have to find if a consecutive sequence exist in the given groupsize.
+If arr.size() not divible by grp size --> we can't form the group.
+1)As I have learnt we can use maps for counting the frequencies of numbers.characters in vector/array.So we'll use maps to first count frencies of numbers in given vector.
+2)Then we'll iterate thru map we created and find the first number { int temp=mp.begin()->first)
+3)check if cinsecutive seq exits 
+
+class Solution {
+public:
+    bool isNStraightHand(vector<int>& hand, int groupSize) {
+        map <int,int> m;
+        int c=0;
+        
+        if(hand.size() % groupSize!=0)
+        {
+            return false;
+        }
+        else
+        {
+            for(int i=0;i<hand.size();i++)
+            {
+                m[hand[i]]++;
+            }
+           while(!m.empty())
+           {
+            int temp=m.begin()->first;
+            for(int i=0;i<groupSize;i++)
+            {
+                if(m[temp+i]==0)
+                {
+                    return false;
+                }
+            
+            m[temp+i]--;
+            if(m[temp+i]<1)
+            {
+                m.erase(temp+i);
+            }
+            }
+           }
+           return true;
+        }
+        
+       
+        
+    }
+};
