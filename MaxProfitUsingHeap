@@ -1,0 +1,42 @@
+Problem - k-distinct projects , w- intial capital , p[]-profit of each work , c[]-capital of each work
+
+ We have to find k projects such that profit is maximized .
+1) inital capital w >=c[i] then only we can select that work .After one work is done is resultant profit shud be added
+2) instead of iterating everytime in search of work better to sort the profit . Once we sort a single array the indeces of other array will not match hence we are changing the data .
+  soln--> make a paired vector and then sort it . ( vector<pair<int,int>> t --> t<p[i],c[i]>)
+3)If there are multi options for capital then the work giving max profit must be selected .
+
+Here I've learnt the concept of heap with priority queue.We know max heap is ds w highest or maximum value be on top.Thus we will add the maximum profitting work in the heap and pop it from the queue till k 
+works are accomplished .
+
+class Solution {
+public:
+    int findMaximizedCapital(int k, int w, vector<int>& p, vector<int>& c) {
+        vector<pair<int,int>>t;
+        for(int i=0;i<c.size();i++)
+        {
+            t.push_back({c[i],p[i]});
+        }
+        sort(t.begin(),t.end());
+        priority_queue<int> pq;
+
+       int i=0;
+        while(k>0)
+        {
+            while (i < t.size() && t[i].first <= w) {
+                pq.push(t[i].second);
+                i++;
+            }
+                if(pq.empty())
+                {
+                    break;
+                }
+                w+=pq.top();
+                pq.pop();
+            
+            k--;
+        }
+        return w;
+        
+    }
+};
