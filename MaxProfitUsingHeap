@@ -19,8 +19,7 @@ public:
         }
         sort(t.begin(),t.end());
         priority_queue<int> pq;
-
-       int i=0;
+        int i=0;
         while(k>0)
         {
             while (i < t.size() && t[i].first <= w) {
@@ -37,6 +36,5 @@ public:
             k--;
         }
         return w;
-        
-    }
+       }
 };
