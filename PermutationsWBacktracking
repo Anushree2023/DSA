@@ -1,0 +1,32 @@
+class Solution {
+    List<List<Integer>> l;
+    List<Integer>l0;
+    public void fun(int []nums,List<Integer>l0)
+    {
+        if(nums.length==l0.size())
+        {
+            l.add(new ArrayList<>(l0));
+            return;
+        }
+        else
+        {
+            for(int i=0;i<nums.length;i++)
+            {
+            if(!l0.contains(nums[i]))
+            {
+                l0.add(nums[i]);
+                fun(nums,l0);
+                l0.remove(l0.size()-1);
+            }
+            }
+        }
+    }
+    public List<List<Integer>> permute(int[] nums) {
+        l=new ArrayList<>();
+        l0=new ArrayList<>();
+        fun(nums,l0);
+        return l;
+        
+        
+    }
+}
