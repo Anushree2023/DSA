@@ -1,0 +1,29 @@
+Implementation of Hashing using unordered_map in c++;
+umap <key,value>   <first,second>
+
+
+
+class Solution {
+public:
+    string kthDistinct(vector<string>& arr, int k) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
+        vector<string> a;
+        unordered_map<string, int> up;
+        for (int i = 0; i < arr.size(); i++) {
+            up[arr[i]]++;                            //Incrementing the value of the key 
+        }
+        for (int i = 0; i < arr.size(); i++) {
+            if (up[arr[i]] == 1) {                  //      Accessing the value of map 
+                a.push_back(arr[i]);
+            }
+        }
+        if (k <= a.size()) {
+            return a[k - 1];
+        } else {
+
+            return "";
+        }
+    }
+};
