@@ -12,15 +12,17 @@ public:
     }
     
     int BtoD(vector<int>& a) {
-        int sum = 0;
-        for (int i = a.size() - 1; i >= 0; i--) {
+        int sum = 0;                                                               //B to D
+        for (int i = a.size() - 1; i >= 0; i--) {                                // binary LSB (last digit) * 2^0....n;
             sum += a[i] * power(2, i);
         }
         return sum;
     }
 
     vector<int> DtoB(int num) {
-        vector<int> a;
+        vector<int> a;                                                             // D to B
+                                                                                // Keep dividing num by 2 till it becomes 1 or 0
+                                                                                    store remainder in reverse order 
         
 
             while (num>=1) {
