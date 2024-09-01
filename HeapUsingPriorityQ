@@ -1,0 +1,21 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+MIN HEAP  ------------------------------>priority_queue<int,vector<int>,greater<int>>minheap ;
+MAX HEAP-------------------------------->priority_queue<int> maxHeap;
+int main()
+{ 
+    priority_queue<int,vector<int>,greater<int>> minh;
+    vector<int> arr={1,5,2,3,9,7,8,5};
+    for(auto it:arr)
+    {
+      minh.push(it);
+    }
+    while(!minh.empty())
+    {
+      cout<<minh.top()<<" ";
+      minh.pop();
+    }
+return 0;
+        
+}
