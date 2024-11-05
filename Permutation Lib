@@ -1,0 +1,35 @@
+ is used to rearrange the elements of the given range [first, last) to the lexicographical larger permutation if it exists.
+
+Syntax
+std::next_permutation(first, last);
+
+
+std::prev_permutation()
+The std::prev_permutation is used to rearrange the elements of the given range [first, last) in the lexicographical smaller permutation if it exists.
+
+Syntax
+std::prev_permutataion(first, last)
+
+
+
+ /*Checking if B is a permutation of A*/
+    if ( is_permutation ( A.begin(), A.end(), B.begin() ) )
+    {
+        std :: cout << "Anagrams" ;
+    }
+    
+    else
+    {
+        std :: cout << "Not Anagrams" ;
+    }
+
+
+
+// False
+is_permutation ( c1.begin(),     c1.end (), c2.begin(), c2.end ()) 
+
+// True
+is_permutation ( c1.begin() + 1, c1.end (), c2.begin(), c2.end ())
+
+// True, all empty ranges are permutations of each other
+is_permutation ( c1.end (), c1.end (), c2.end(), c2.end ())
