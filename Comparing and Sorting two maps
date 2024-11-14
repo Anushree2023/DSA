@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+       map<char,int>oms;
+     map<char,int>omt;
+        for (int i = 0; i < s.size(); i++) {
+            oms[s[i]]++;
+        }
+
+        for (int j = 0; j < t.size(); j++) {
+            omt[t[j]]++;
+        }
+
+        if (oms.size() != omt.size()) {
+            return false;
+        }
+
+        for (const auto& [key, value] : oms) {
+            if (omt[key] != value) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+};
