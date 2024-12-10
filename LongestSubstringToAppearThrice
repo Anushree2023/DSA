@@ -1,0 +1,45 @@
+class Solution {
+public:
+bool fun(string x)
+{
+    if(x.size()>1)
+    {
+    for(int i=1;i<x.size();i++)
+    {
+        if(x[i-1]!=x[i])
+        {
+            return false;
+        }
+    }
+    }
+    return true;
+}
+    int maximumLength(string s) {
+        unordered_map<string,int>um;
+         int ans=-1;
+        for(int i=0;i<s.size();i++)
+        {
+            for(int j=1;j<s.size()-i+1;j++)                           j is 2nd ptr that moves to find substrings of string from i .Why set j till s.size()-i+1?
+                                                                    --> (Cuz we want j to move till s.size()-i  bcuz max length to find all substrings frm i shud be s.size()-i
+                                                                              and we added 1 cuz if we wudnt hv added it wudve missed s.size-i th element)
+            {
+                string sub=s.substr(i,j);                                
+                if(fun(sub))
+                {
+                um[sub]++;
+                }
+                
+            }
+        }
+        for(auto [sub,it] :um)
+        {
+            if(it>=3)
+                {
+                     ans=max(ans,int(sub.size()));
+                }
+        }
+        return ans;
+
+        
+    }
+};
