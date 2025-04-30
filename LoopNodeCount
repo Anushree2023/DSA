@@ -1,0 +1,34 @@
+
+class Solution {
+  public:
+    // Function to find the length of a loop in the linked list.
+    int fun(Node *intersctn)
+    {
+        Node *temp=intersctn;
+        int cnt=1;
+        while(temp->next!=intersctn)
+        {
+            cnt++;
+            temp=temp->next;
+        }
+        return cnt;
+    }
+    int countNodesinLoop(Node *head) {
+        Node *slow=head,*fast=head;
+      while(fast!=NULL && fast->next!=NULL)
+        {
+            slow=slow->next;
+            fast=fast->next->next;
+            
+            if(slow==fast)
+            {
+               return fun(slow); 
+            }
+            
+        }
+        return 0;
+        
+    }
+};
+
+
