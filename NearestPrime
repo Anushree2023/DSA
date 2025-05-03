@@ -1,0 +1,35 @@
+class Solution {
+  public:
+  
+  
+  bool isprime(int num) {
+      if (num < 2) return false;
+      if (num == 2) return true;
+      if (num % 2 == 0) return false;
+      for (int i = 3; i * i <= num; i += 2) {
+          if (num % i == 0) return false;
+      }
+      return true;
+  }
+
+  
+  int nearp(int num) {
+      if (isprime(num)) return num;
+      int lower = num - 1, upper = num + 1;
+      while (true) {
+          if (lower >= 2 && isprime(lower)) return lower;
+          if (isprime(upper)) return upper;
+          lower--;
+          upper++;
+      }
+  }
+
+  Node* primeList(Node *head) {
+      Node* curr = head;
+      while (curr != nullptr) {
+          curr->val = nearp(curr->val);
+          curr = curr->next;
+      }
+      return head;
+  }
+};
