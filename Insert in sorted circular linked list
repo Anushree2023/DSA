@@ -1,0 +1,37 @@
+class Solution {
+public:
+    Node* sortedInsert(Node* head, int data) {
+       Node* node = new Node(data);
+
+
+        // Case 1: Empty list
+        if (head == nullptr) {
+            node->next = node;
+            return node;
+        }
+
+        Node* curr = head;
+
+        // Case 2: Insert before head
+        if (data < head->data) {
+            // Find the last node 
+            while (curr->next != head) {
+                curr = curr->next;
+            }
+
+            curr->next = node;
+            node->next = head;
+            return node;
+        }
+
+        // Case 3: Insert in correct sorted position
+        while (curr->next != head && curr->next->data < data) {
+            curr = curr->next;
+        }
+
+        node->next = curr->next;
+        curr->next = node;
+
+        return head; 
+    }
+};
