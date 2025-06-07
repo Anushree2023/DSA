@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string clearStars(string s) {
+        int n = s.size();
+        string ans="";
+       priority_queue<char,vector<char>,greater<char>>pq;
+       unordered_map<char,vector<int>>um;
+       vector<bool>v(n,true);
+       for(int i=0;i<n;i++)
+       {
+        if(s[i]=='*')
+        {
+            if(!pq.empty())
+            {
+            char mini=pq.top();
+            pq.pop();
+            int l=um[mini].back();
+            um[mini].pop_back();
+            v[l]=false;
+            v[i]=false;
+            }
+        }
+        else
+        {
+            pq.push(s[i]);
+            um[s[i]].push_back(i);
+        }
+       }
+       for(int i=0;i<n;i++)
+       {
+        if(v[i])
+        ans+=s[i];
+       }
+       return ans;
+    }
+};
