@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int findLHS(vector<int>& nums) {
+        int n = nums.size();
+        sort(nums.begin(), nums.end());
+
+        int s = 0, e = 0;
+        int maxi = 0;
+
+        while (e < n) {
+            while (e < n && nums[e] - nums[s] > 1) {
+                s++;
+            }
+            if (nums[e] - nums[s] == 1) {
+                maxi = max(maxi, e - s + 1);
+            }
+            e++;
+        }
+
+        return maxi;
+    }
+};
