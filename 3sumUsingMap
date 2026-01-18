@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        set<vector<int>> s;
+        int n = nums.size();
+
+        for (int i = 0; i < n; i++) {
+            unordered_map<int, int> mp;
+            for (int j = i + 1; j < n; j++) {
+                int target = -nums[i] - nums[j];
+                if (mp.count(target)) {
+                    vector<int> temp = {nums[i], nums[j], target};
+                    sort(temp.begin(), temp.end());
+                    s.insert(temp);
+                }
+                mp[nums[j]]++;
+            }
+        }
+
+        return vector<vector<int>>(s.begin(), s.end());
+    }
+};
