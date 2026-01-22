@@ -1,0 +1,19 @@
+int subarraySum(int[] nums, int k) {
+        int n=nums.length;
+        int sum=0,cnt=0;
+        HashMap<Integer,Integer>hash=new HashMap<>();
+        hash.put(0,1);
+        for(int i=0;i<n;i++)
+        {
+            sum+=nums[i];
+            if(hash.containsKey(sum-k))
+            {
+                cnt+=hash.get(sum-k);
+            }
+            hash.put(sum,hash.getOrDefault(sum,0)+1);
+        }
+        return cnt;
+        
+
+        
+    }
